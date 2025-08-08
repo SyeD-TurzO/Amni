@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Professional Portfolio</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base styles for the body and a custom fade-in animation */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #E2E8F0; /* Light gray text for contrast */
+            background-color: #000;
+            overflow: hidden; /* Hide overflow from the video background */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in-on-load {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Full-screen video background */
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+            object-fit: cover;
+        }
+
+        /* Semi-transparent dark overlay for readability */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency here */
+            z-index: -99;
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #1F2937;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #4B5563;
+            border-radius: 4px;
+        }
+
+        /* Custom styles for the glow effect on the follow button */
+        .glow-button {
+            box-shadow: 0 0 10px rgba(79, 172, 254, 0.8), 0 0 20px rgba(79, 172, 254, 0.6), 0 0 30px rgba(79, 172, 254, 0.4);
+        }
+
+        /* Media query for portrait mode devices */
+        @media (orientation: portrait) {
+            .video-background {
+                /* Rotate the video 90 degrees to fill the screen in portrait mode */
+                transform: rotate(90deg) scaleX(1.1); /* Rotate and scale slightly to ensure full coverage */
+                /* Adjust positioning to center the rotated video */
+                top: 50%;
+                left: 50%;
+                transform-origin: 0 0;
+                transform: rotate(90deg) translate(-50%, -50%);
+                min-width: 100vh;
+                min-height: 100vw;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Video tag for the full-screen background -->
+    <!-- Video source is now 'sample.mp4' from the same folder -->
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Semi-transparent dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main content container, centered and responsive -->
+    <main id="main-content" class="fade-in-on-load text-center max-w-xl mx-auto backdrop-blur-md bg-gray-900/50 p-8 sm:p-12 rounded-2xl shadow-2xl z-10 w-full">
+
+        <!-- Profile Section -->
+        <div class="flex flex-col items-center">
+            <!-- Profile Image - Clickable to show larger version -->
+            <button id="profile-btn" class="relative rounded-full overflow-hidden w-24 h-24 sm:w-32 sm:h-32 mb-4 ring-4 ring-blue-500 hover:ring-8 transition-all duration-300 transform hover:scale-110">
+                <!-- Profile image URL has been updated -->
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOpEKnec4I77_P_srt03T7Jpo6FLWn_W9qMRuJe-fmIvOU8ypyhUR5yklwlugU2Yqmr9QuOnyKRk2_EvU8v712PgYpcBF3d1IbJrst_Ak9lo2qu-Qiia8TZIxZY7fnnHc-FYD0ciy78qW4An-kzBt4W=w958-h960-s-no-gm?authuser=0" alt="Profile Picture" class="object-cover w-full h-full">
+                <span class="absolute inset-0 bg-blue-500 opacity-0 hover:opacity-20 transition-opacity"></span>
+            </button>
+
+            <!-- Name and Description -->
+            <h1 class="text-3xl sm:text-4xl font-bold mb-1 text-white">Your Full Name</h1>
+            <p class="text-lg sm:text-xl text-gray-400 mb-6">A Concise Description or Title</p>
+
+            <!-- "Follow" Button -->
+            <button class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 glow-button">
+                Follow
+            </button>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="mt-10 pt-8 border-t border-gray-700">
+            <p class="text-gray-400 text-sm sm:text-base mb-4">Connect with me</p>
+            <div class="flex justify-center space-x-6 sm:space-x-8">
+                <!-- Social Link 1: Facebook -->
+                <!-- REPLACE '#facebook_link' with your actual link -->
+                <a href="#facebook_link" target="_blank" class="text-gray-400 hover:text-blue-500 transition-all duration-300 transform hover:scale-125">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+                <!-- Social Link 2: YouTube -->
+                <!-- REPLACE '#youtube_link' with your actual link -->
+                <a href="#youtube_link" target="_blank" class="text-gray-400 hover:text-red-500 transition-all duration-300 transform hover:scale-125">
+                    <i class="fab fa-youtube fa-2x"></i>
+                </a>
+                <!-- Social Link 3: Instagram -->
+                <!-- REPLACE '#instagram_link' with your actual link -->
+                <a href="#instagram_link" target="_blank" class="text-gray-400 hover:text-pink-500 transition-all duration-300 transform hover:scale-125">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <!-- Social Link 4: Discord -->
+                <!-- REPLACE '#discord_link' with your actual link -->
+                <a href="#discord_link" target="_blank" class="text-gray-400 hover:text-indigo-500 transition-all duration-300 transform hover:scale-125">
+                    <i class="fab fa-discord fa-2x"></i>
+                </a>
+                <!-- Social Link 5: GitHub -->
+                <!-- REPLACE '#github_link' with your actual link -->
+                <a href="#github_link" target="_blank" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-125">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal for the profile image -->
+    <div id="profile-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300">
+        <div class="relative w-full max-w-sm sm:max-w-md mx-auto">
+            <button id="modal-close-btn" class="absolute top-2 right-2 text-white text-3xl hover:text-gray-300 transition-colors">&times;</button>
+            <!-- Modal image URL has been updated -->
+            <img id="modal-image" src="https://lh3.googleusercontent.com/pw/AP1GczOpEKnec4I77_P_srt03T7Jpo6FLWn_W9qMRuJe-fmIvOU8ypyhUR5yklwlugU2Yqmr9QuOnyKRk2_EvU8v712PgYpcBF3d1IbJrst_Ak9lo2qu-Qiia8TZIxZY7fnnHc-FYD0ciy78qW4An-kzBt4W=w958-h960-s-no-gm?authuser=0" alt="Larger Profile Picture" class="rounded-lg shadow-xl w-full">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for interactivity
+        window.onload = function() {
+            // Get elements from the DOM
+            const profileBtn = document.getElementById('profile-btn');
+            const profileModal = document.getElementById('profile-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            // Show the modal when the profile button is clicked
+            profileBtn.addEventListener('click', () => {
+                profileModal.classList.remove('hidden');
+            });
+
+            // Hide the modal when the close button or overlay is clicked
+            modalCloseBtn.addEventListener('click', () => {
+                profileModal.classList.add('hidden');
+            });
+
+            profileModal.addEventListener('click', (e) => {
+                // Check if the click was on the overlay, not the image itself
+                if (e.target === profileModal) {
+                    profileModal.classList.add('hidden');
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
